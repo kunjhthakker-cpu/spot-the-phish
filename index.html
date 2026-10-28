@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Spot the Phish – Security Awareness Program</title>
+  <meta name="description" content="A short, free phishing awareness program: take a quick quiz, learn the red flags, then see how much you improved. Anonymous and voluntary.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="wrap bar">
+      <strong class="brand">Spot the Phish</strong>
+      <nav aria-label="Program steps">
+        <ol class="steps">
+          <li><a href="#start">1. Start</a></li>
+          <li><a href="#pre">2. Pre-quiz</a></li>
+          <li><a href="#learn">3. Learn</a></li>
+          <li><a href="#post">4. Post-quiz</a></li>
+          <li><a href="#feedback">5. Feedback</a></li>
+        </ol>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- 1. LANDING + CONSENT -->
+    <section id="start" class="hero">
+      <div class="wrap">
+        <p class="eyebrow">Phishing Awareness Program</p>
+        <h1>Can you spot the fake email?</h1>
+        <p class="lead">Phishing is the most common way attackers get into accounts. This 15-minute program takes you through a quick quiz, a short lesson, and a second quiz so you can see what you learned.</p>
+
+        <div class="card consent" id="consent-box">
+          <h2>Before you begin: your consent</h2>
+          <ul>
+            <li><strong>Purpose:</strong> a university course project on security awareness. We are measuring whether this program improves phishing awareness.</li>
+            <li><strong>What we collect:</strong> your quiz answers only. <strong>No name, email address or login is requested.</strong> Results are reported only as anonymous group totals.</li>
+            <li><strong>Voluntary:</strong> you can stop at any time and skip any question. Choosing not to take part has no consequences.</li>
+            <li><strong>Matching your quizzes:</strong> if you'd like your two quizzes linked, choose any nickname or code word and enter the same one in both quizzes. It's optional.</li>
+            <li><strong>Age:</strong> participation is for adults aged 18 or over.</li>
+            <li><strong>Safe by design:</strong> no real malware or fake login pages are used. All examples here are fictional.</li>
+            <li><strong>Questions or withdrawal:</strong> contact the team at <span data-config="contact">[team contact email]</span>.</li>
+          </ul>
+          <label class="check">
+            <input type="checkbox" id="consent-check">
+            <span>I am 18 or over, I have read the above, and I agree to take part voluntarily.</span>
+          </label>
+          <button type="button" id="consent-btn" class="btn" disabled>Continue to the pre-quiz</button>
+          <p id="consent-status" class="note" role="status" aria-live="polite"></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. PRE-ASSESSMENT -->
+    <section id="pre" class="locked" aria-labelledby="pre-h">
+      <div class="wrap">
+        <h2 id="pre-h">Step 2: Pre-quiz <span class="tag">~5 min</span></h2>
+        <p>Answer honestly. It's not a test of you, it's our baseline. Please <strong>don't look anything up</strong> yet.</p>
+        <div class="gated" data-gated>
+          <div class="form-slot" data-form="pre"></div>
+          <p class="note">Form not loading? <a data-form-link="pre" href="#" target="_blank" rel="noopener">Open it in a new tab</a>.</p>
+        </div>
+        <p class="locked-msg" data-locked-msg>Please give your consent in Step 1 to unlock this step.</p>
+      </div>
+    </section>
+
+    <!-- 3. LEARN -->
+    <section id="learn" class="alt" aria-labelledby="learn-h">
+      <div class="wrap">
+        <h2 id="learn-h">Step 3: Learn the red flags</h2>
+        <p>Phishing emails try to rush you into acting. Slow down and check these five things.</p>
+
+        <ul class="flags">
+          <li class="card"><h3>1. Sender address</h3><p>The display name can say anything. Check the real address. Look-alikes such as <code>helpdesk@uni-support.co</code> instead of your real domain are a warning.</p></li>
+          <li class="card"><h3>2. Urgency or fear</h3><p>"Act in 24 hours or your account is closed." Pressure is the attacker's main tool.</p></li>
+          <li class="card"><h3>3. Mismatched links</h3><p>Hover (or long-press on a phone) to preview the real destination. If it doesn't match the text, don't click.</p></li>
+          <li class="card"><h3>4. Unexpected attachments</h3><p>Invoices, "scanned documents" and ZIP files you didn't ask for are a classic way to deliver malware.</p></li>
+          <li class="card"><h3>5. Requests for secrets</h3><p>Real organisations never ask for your password, OTP or PIN by email, text or call.</p></li>
+        </ul>
+
+        <h3>Try it: tap the suspicious parts</h3>
+        <p class="note">This is a fictional email. Select each highlighted part to see what gives it away. Nothing you do here is recorded.</p>
+
+        <div class="email" role="group" aria-label="Example phishing email">
+          <p class="meta"><b>From:</b> <button class="hot" data-hint="h1">"Uni IT Helpdesk" &lt;support@uni-helpdesk-secure.co&gt;</button></p>
+          <p class="meta"><b>Subject:</b> <button class="hot" data-hint="h2">URGENT: Your mailbox will be deleted in 24 hours</button></p>
+          <hr>
+          <p>Dear student,</p>
+          <p>We detected unusual activity. To keep your account, <button class="hot" data-hint="h3">verify your password now</button> using the link below:</p>
+          <p><button class="hot" data-hint="h4">https://uni-login.verify-now.example/account</button></p>
+          <p>Attachment: <button class="hot" data-hint="h5">Security_Update.zip</button></p>
+          <p>Regards,<br>IT Team</p>
+        </div>
+        <div id="hint" class="hint" role="status" aria-live="polite">Select a highlighted part of the email above.</div>
+
+        <h3>Quick check: real or fake?</h3>
+        <div id="mini" class="mini"></div>
+
+        <h3>I think I clicked, what now?</h3>
+        <ol class="clicked">
+          <li><strong>Don't panic, and don't delete the email yet.</strong> It is useful evidence.</li>
+          <li><strong>Disconnect</strong> from Wi-Fi if you opened an attachment.</li>
+          <li><strong>Change the password</strong> of the affected account from a safe device, and anywhere you reused it.</li>
+          <li><strong>Turn on two-factor authentication</strong> (2FA) and check for unknown sign-ins or forwarding rules.</li>
+          <li><strong>Report it</strong> to your IT or security team, and forward the email to them.</li>
+          <li><strong>If money or card details were involved,</strong> call your bank at once. In India, report cyber fraud at <a href="https://cybercrime.gov.in" target="_blank" rel="noopener">cybercrime.gov.in</a> or call <strong>1930</strong>.</li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- 4. POST-ASSESSMENT -->
+    <section id="post" class="locked" aria-labelledby="post-h">
+      <div class="wrap">
+        <h2 id="post-h">Step 4: Post-quiz <span class="tag">~5 min</span></h2>
+        <p>Similar questions again. If you used a nickname before, use the same one.</p>
+        <div class="gated" data-gated>
+          <div class="form-slot" data-form="post"></div>
+          <p class="note">Form not loading? <a data-form-link="post" href="#" target="_blank" rel="noopener">Open it in a new tab</a>.</p>
+        </div>
+        <p class="locked-msg" data-locked-msg>Please give your consent in Step 1 to unlock this step.</p>
+      </div>
+    </section>
+
+    <!-- 5. FEEDBACK + SOCIAL -->
+    <section id="feedback" class="alt locked" aria-labelledby="fb-h">
+      <div class="wrap">
+        <h2 id="fb-h">Step 5: Feedback &amp; share</h2>
+        <div class="gated" data-gated>
+          <div class="form-slot short" data-form="feedback"></div>
+          <p class="note">Form not loading? <a data-form-link="feedback" href="#" target="_blank" rel="noopener">Open it in a new tab</a>.</p>
+        </div>
+        <p class="locked-msg" data-locked-msg>Please give your consent in Step 1 to unlock this step.</p>
+
+        <h3>Follow the campaign</h3>
+        <p>Daily tips, polls and quizzes. Comments are welcome. Please don't post personal details.</p>
+        <ul class="social" id="social"></ul>
+        <p class="note">Hashtags: <strong>#SpotThePhish</strong> <strong>#ThinkBeforeYouClick</strong> <strong>#CyberAware</strong></p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p>A student security-awareness project. All examples are fictional, and no real brands, people or login pages are used. Data is collected anonymously with consent and reported only in aggregate. If you reported a real phishing email to anyone because of this program, great, that's the goal.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
