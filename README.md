@@ -2,13 +2,13 @@
 
 A lightweight static site (plain HTML/CSS/JS, no build step, about 20 KB) for a university phishing-awareness project.
 
-**Flow:** consent → pre-quiz (Google Form) → learn → post-quiz (Google Form) → feedback + social links.
+**Flow:** consent → pre-quiz (Google Form) → learn → post-quiz (Google Form) → feedback.
 
 ## Setup (about 10 minutes)
 
 1. **Create 3 Google Forms** (see suggested questions below).
 2. In each Form: *Send → `<>` tab → copy the `src` URL*.
-3. Paste the URLs and your contact email / social links into the `CONFIG` block at the top of `script.js`.
+3. Paste the URLs and your contact email into the `CONFIG` block at the top of `script.js`.
 4. Deploy: on vercel.com choose **Add New → Project → import this repo**. Leave all settings at the defaults. There is no build command and no output directory.
 
 ## Ethics and data (matches the assignment rules)

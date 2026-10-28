@@ -1,20 +1,14 @@
 /* ------------------------------------------------------------------
    EDIT THIS BLOCK ONLY.
-   Paste your Google Form links here. In Google Forms:
-   Send -> "<>" (embed) tab -> copy the src="..." URL (it ends in ?embedded=true),
-   or use the normal share link (the page will still offer "open in new tab").
+   Google Form links and the team contact email.
 ------------------------------------------------------------------- */
 const CONFIG = {
-  contact: "",                 // e.g. "yourteam@gmail.com"
+  contact: "kunjhthakker@gmail.com",
   forms: {
-    pre: "",                   // pre-quiz Google Form URL
-    post: "",                  // post-quiz Google Form URL
-    feedback: ""               // short feedback Google Form URL
-  },
-  social: [
-    // { label: "Instagram", url: "https://instagram.com/yourhandle" },
-    // { label: "LinkedIn",  url: "https://linkedin.com/in/yourprofile" }
-  ]
+    pre: "https://docs.google.com/forms/d/e/1FAIpQLScuqORDXtzezxrBBKKmTod2Y_H5_235QkNYl205QLbexXuLwQ/viewform?embedded=true",
+    post: "https://docs.google.com/forms/d/e/1FAIpQLSf1lTWBMb8NSXx8LkdMCay1-FVkiGSRK7zGdDOUPKCT8cHiXg/viewform?embedded=true",
+    feedback: "https://docs.google.com/forms/d/e/1FAIpQLScITSHY5iBDN3PZUKfn9B0vB8-mVb-4g6ymAnIbNiltRLAL3A/viewform?embedded=true"
+  }
 };
 
 (function () {
@@ -26,19 +20,6 @@ const CONFIG = {
 
   /* contact placeholder */
   if (CONFIG.contact) $$('[data-config="contact"]').forEach(el => { el.textContent = CONFIG.contact; });
-
-  /* social links */
-  const social = $("#social");
-  if (CONFIG.social.length) {
-    CONFIG.social.forEach(s => {
-      const li = document.createElement("li");
-      const a = document.createElement("a");
-      a.href = s.url; a.target = "_blank"; a.rel = "noopener"; a.textContent = s.label;
-      li.appendChild(a); social.appendChild(li);
-    });
-  } else {
-    social.innerHTML = '<li class="note">Add your social media links in script.js (CONFIG.social).</li>';
-  }
 
   /* Google Forms: only injected AFTER consent (nothing loads from Google before then) */
   function embedForms() {
